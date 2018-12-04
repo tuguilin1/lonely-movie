@@ -1,0 +1,39 @@
+$color:#1c2635;
+
+.header{
+	background: $color;
+	width:100vw;
+	height: 4rem;
+	display: flex;
+	.logo{
+		width: 26%;
+		height: 4rem;
+		background: url("./logo.png") no-repeat;
+		background-size: 5rem 3rem;
+		background-position: 1rem .5rem;
+	}
+	.list{
+		width: 50%;
+		height: 4rem;
+		margin-left: 2rem;
+		display: flex;
+		justify-content: space-between;
+		p{
+			margin: 0;
+			height: 3.8rem;
+			color:#999;
+			line-height: 3.8rem;
+		}
+		.active{
+				color:white;
+				border-bottom: .2rem solid white;
+		}
+	}
+	.user{
+		width: 20%;
+		height: 4rem;
+		background: url("./用户.png") no-repeat;
+		background-size:2rem 2rem;
+		background-position:2rem 1rem;
+	}
+}

@@ -1,0 +1,46 @@
+.onshow{
+	box-sizing: border-box;
+	padding-left: 1rem;
+	padding-right:1rem;
+	header{
+		height: 3rem;
+		line-height: 3rem;
+		font-size: 1.5rem;
+		font-weight: bolder;
+		position: relative;
+		.am-icon{
+			position: absolute;
+			right: 0rem;
+			top:1rem;
+			font-size: 1.2rem;
+		}
+	}
+	.movie-list{
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin: 0;
+		padding:0;
+		border-bottom: 1px solid #BBB;
+		li{
+			height: 10rem;
+			list-style: none;
+			width:25%;
+			.movie-img{
+				height: 7rem;
+				width:90%;
+				margin: 0 auto;
+				img{
+					height: 100%;
+					width: 100%;
+				}
+			}
+			p{
+				text-align: center;
+				height: 2.5rem;
+				overflow: hidden;
+			}
+		}
+	}
+
+}
