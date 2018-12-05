@@ -2,6 +2,8 @@ import React,{Component} from "react"
 import {Icon,Badge} from "antd-mobile"
 import {getNowMovie} from "../../ajax/api"
 import "./index.scss"
+import {store} from "../../redux"
+import {Link} from "../../router"
 
 export default class Onshow extends Component{
 	constructor(props){
@@ -14,6 +16,11 @@ export default class Onshow extends Component{
 	}
 	getMovies = async ()=>{
 		let data = await getNowMovie();
+		let action = {
+			type:"CHANGEMOVIES",
+			payload:data.data.ms
+		}
+		store.dispatch(action)
 		this.setState({
 			movieList:data.data.ms.slice(0,8),
 			futureNumber:data.data.totalComingMovie,
@@ -26,10 +33,12 @@ export default class Onshow extends Component{
 	render(){
 		return(
 			<section className="onshow">
-				<header>
-					正在热映({this.state.nowNumber})
-					<Icon type="right" />
-				</header>
+				<Link to="/hotmovie">
+					<header>
+						正在热映({this.state.nowNumber})
+						<Icon type="right" />
+					</header>
+				</Link>
 				<ul className="movie-list">
 					{this.state.movieList.map((item,index)=>{
 						return (

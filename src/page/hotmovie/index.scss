@@ -1,0 +1,24 @@
+$color:#1c2635;
+
+.hot-movie{
+	header{
+		width: 100vw;
+		height: 3rem;
+		background: $color;
+		position: relative;
+		overflow: hidden;
+		.am-icon{
+			position: absolute;
+			top:.5rem;
+		}
+		.choice{
+			width: 60%;
+			height: 2rem;
+			margin: .5rem auto;
+		}
+		.am-segment-item{
+			border:1px solid black;
+			color:#999;
+		}
+	}
+}

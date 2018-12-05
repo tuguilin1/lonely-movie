@@ -1,11 +1,10 @@
 import React,{Component} from "react"
 import "./index.scss"
-
 export default class Header extends Component{
 	constructor(props){
 		super(props);
 		this.state={
-			index:1
+			index:0
 		}
 	}
 	changeActive = (index)=>{
@@ -20,7 +19,7 @@ export default class Header extends Component{
 				<div className="logo"></div>
 				<div className="list">
 					{list.map((item,index)=>{
-						return <p onClick={this.changeActive.bind(this,index)} className={index == this.state.index?"active":""} key={index}>{item}</p>
+						return <p onClick={this.changeActive.bind(this,index)} className={index === this.state.index?"active":""} key={index}>{item}</p>
 					})}
 				</div>
 				<div className="user"></div>

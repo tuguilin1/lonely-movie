@@ -1,9 +1,8 @@
 import React,{Component} from "react"
 import Header from "../../components/header"
 import Article from "../../components/article"
-import Onshow from "../../components/onshow"
-import { Icon } from 'antd-mobile'
-import "./index.scss"
+import IndexPage from "../../components/indexpage"
+import {Route,Redirect} from "../../router"
 
 export default class Index extends Component{
 	constructor(props){
@@ -14,17 +13,9 @@ export default class Index extends Component{
 		return(
 			<div>
 				<Header/>
-				<section className="search">
-					<div className="location">
-						北京
-						<Icon type="down"/>
-					</div>
-					<div className="search-bar">
-						影片/影院/影人，任你搜
-						<Icon type="search"/>
-					</div>
-				</section>
-				<Onshow/>
+
+				<Route path="/index/movie" component={IndexPage} />
+				<Redirect origin="/index" destination="/index/movie" />
 			</div>
 		)
 	}
