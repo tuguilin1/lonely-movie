@@ -54,10 +54,12 @@ export default class Onshow extends Component{
 					})}
 
 				</ul>
-				<header>
-					即将上映({this.state.futureNumber})
-					<Icon type="right"/>
-				</header>
+				<Link to="/hotmovie">
+					<header>
+						即将上映({this.state.futureNumber})
+						<Icon type="right"/>
+					</header>
+				</Link>
 			</section>
 		)
 	}

@@ -27,6 +27,8 @@
     "axios": "^0.18.0",
     "babel-plugin-import": "^1.11.0",
     "node-sass": "^4.10.0",
+    "path-to-regexp": "^2.4.0",
+    "prop-types": "^15.6.2",
     "react-app-rewired": "^1.6.2"
   }
 }

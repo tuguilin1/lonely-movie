@@ -1,6 +1,8 @@
 $color:#1c2635;
 
-.hot-movie{
+.hotmovie{
+	width: 100vw;
+	overflow: hidden;
 	header{
 		width: 100vw;
 		height: 3rem;
@@ -19,6 +21,17 @@ $color:#1c2635;
 		.am-segment-item{
 			border:1px solid black;
 			color:#999;
+		}
+	}
+	.not-active{
+		display: none;
+	}
+	.movie-list{
+		display: flex;
+		width: 200vw;
+		transition: transform .5s ease;
+		.hot-movie-futrue,.hot-movie-now{
+			width: 100vw;
 		}
 	}
 }

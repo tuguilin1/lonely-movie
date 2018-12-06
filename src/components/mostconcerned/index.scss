@@ -1,0 +1,76 @@
+.most-concerned{
+	nav{
+		font-size: 1.3rem;
+		margin-left: 1rem;
+		font-weight: bolder;
+		height: 3rem;
+		line-height: 3rem;
+	}
+	.space-carousel {
+	  padding: 16px;
+	  overflow: hidden;
+	}
+	.hot-movie{
+		box-sizing: border-box;
+		padding:.5rem 1rem;
+		.hot-movie-img{
+			height: 10rem;
+			float:left;
+			width: 35%;
+			img{
+				width: 100%;
+				height: 100%;
+			}
+		}
+		.hot-movie-info{
+			float:left;
+			width: 55%;
+			margin-left: 1rem;
+			
+
+			p{
+				height: 1.8rem;
+				line-height: 1.8rem;
+				width: 100%;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				span{
+					color:#ff8600;;
+				}
+			}
+			.hot-movie-title{
+				font-weight: bolder;
+				font-size: 1rem;
+				height: 2rem;
+			}
+			.hot-movie-sale{
+				margin-top: .5rem;
+				display: flex;
+				height: 3rem;
+				justify-content: space-between;
+				div{
+					width: 4.5rem;
+					height: 2rem;
+					line-height: 2rem;
+					border-radius: 1rem;
+					text-align: center;
+				}
+				.sale-1{
+					background: #ff8600;
+					color:white;
+				}
+				.sale-2{
+					border: 1px solid #659c0d;
+					color:#659c0d;
+				}
+			}
+		}
+	}
+	section{
+		.futrue-movie{
+			height: 12rem;
+			border-bottom: 1px solid #BBB;
+		}
+	}
+}

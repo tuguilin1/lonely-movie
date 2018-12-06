@@ -25,3 +25,16 @@ export const getNowMovie = function(){
 	})
 }
 
+export const getFutrueMovie = function(){
+	let url = "http://127.0.0.1:3001/futruemovie";
+	return new Promise((res,rej)=>{
+		axios.get(url,{
+			params:{
+				locationId:290
+			}
+		}).then((data)=>{
+			res(data)
+		})
+	})
+}
+
