@@ -1,0 +1,101 @@
+.movie-detail{
+	background: white;
+	.movie-detail-top{
+		height: 8rem;
+		background: rgb(212, 178, 103);
+	}
+	.movie-detail-info{
+		height: 6rem;
+		border-top-right-radius: 1rem;
+		border-top-left-radius: 1rem;
+		transform: translateY(-1rem);
+		width: 100vw;
+		background: white;
+		box-sizing: border-box;
+		padding-left: 1rem;
+		.movie-info{
+			height: 8rem;
+			display: flex;
+			transform: translateY(-3rem);
+			.movie-info-img{
+				height: 8rem;
+				width: 6rem;
+				border: .1rem solid white;
+				border-radius: .1rem;
+				position: relative;
+				.play{
+					width: 2rem;
+					height: 2rem;
+					position: absolute;
+					right: .2rem;
+					bottom: .2rem;
+					background: url("./播放.png") no-repeat;
+					background-size: 2rem 2rem;
+				}
+				img{
+					width: 100%;
+					height: 8rem;
+				}
+			}
+			.movie-info-right{
+				margin-left: 1rem;
+				.movie-name{
+					font-size: 1.5rem;
+					font-weight: bolder;
+					color:white;
+				}
+				.movie-name-en{
+					font-size: .8rem;
+					font-weight: bolder;
+					margin-bottom: .3rem;
+					color:white;
+				}
+				.movie-type,.movie-time,.movie-date{
+					height: 1.8rem;
+					line-height: 1.8rem;
+					color:#777;
+				}
+			}
+		}
+	}
+	.movie-content{
+		background: white;
+		height: 80rem;
+		.nav{
+			width: 100vw;
+			height: 3rem;
+			display: flex;
+			justify-content: space-around;
+			li{
+				list-style:none;
+				font-size: 1rem;
+				line-height: 3rem;
+			}
+			.active{
+				font-weight: bolder;
+			}
+		}
+		.linear{
+			height: 3px;
+			width: 100%;
+			position: relative;
+			.line{
+				height: 3px;
+				width: 1rem;
+				background: black;
+				position: absolute;
+				left:16%;
+				transform: translateX(-.5rem);
+				transition: .5s
+			}
+		}
+		
+	}
+	.fix{
+		position:fixed;
+		left:0;
+		right:0;
+		top:0;
+		background:white;
+	}
+}

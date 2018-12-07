@@ -11,7 +11,7 @@ class App extends Component {
       <Router>
         <Route  path="/index" component={Index} />
         <Route path="/hotmovie" component={Hotmovie}/>
-        <Route path="/movie/:movieid/:name" component={Moviedetail}/>
+        <Route path="/movie/:movieid" component={Moviedetail}/>
         <Redirect origin="/" destination="/index" />
       </Router>
     );
