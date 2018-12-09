@@ -38,3 +38,67 @@ export const getFutrueMovie = function(){
 	})
 }
 
+export const getMovie = function(movieId){
+	let url = "http://127.0.0.1:3001/movie";
+	return new Promise((res,rej)=>{
+		axios.get(url,{
+			params:{
+				locationId:290,
+				movieId
+			}
+		}).then((data)=>{
+			res(data)
+		})
+	})
+}
+
+export const getComments = function(movieId){
+	let url = "http://127.0.0.1:3001/comments";
+	return new Promise((res,rej)=>{
+		axios.get(url,{
+			params:{
+				locationId:290,
+				movieId
+			}
+		}).then((data)=>{
+			res(data)
+		})
+	})
+}
+
+export const getLongComments = function(movieId){
+	let url = "http://127.0.0.1:3001/longcomments";
+	return new Promise((res,rej)=>{
+		axios.get(url,{
+			params:{
+				locationId:290,
+				movieId
+			}
+		}).then((data)=>{
+			res(data)
+		})
+	})
+}
+
+export const getPhotos = function(movieId){
+	let url = "http://127.0.0.1:3001/photos";
+	return new Promise((res,rej)=>{
+		axios.get(url,{
+			params:{
+				locationId:290,
+				movieId
+			}
+		}).then((data)=>{
+			res(data)
+		})
+	})
+}
+
+export const getMovieDetail = function(movieId){
+	return new Promise((res,rej)=>{
+		Promise.all([getMovie(movieId),getComments(movieId),getPhotos(movieId),getLongComments(movieId)]).then((data)=>{
+			res(data)
+		})
+	})
+}
+

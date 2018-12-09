@@ -1,13 +1,20 @@
 import React,{Component} from "react"
 import { Carousel,Button } from 'antd-mobile'
+import PropTypes from "prop-types"
 import "./index.scss"
 
 export default class Mostconcerned extends Component{
+	static contextTypes = {
+		history:PropTypes.object
+	}
 	constructor(props){
 		super(props);
 		this.state = {
 			slideIndex:0
 		}
+	}
+	changeUrl = (movieId)=>{
+		this.context.history.push(`/movie/${movieId}`)
 	}
 	render(){
 		let {list,futrueData} = this.props
@@ -28,7 +35,7 @@ export default class Mostconcerned extends Component{
 			    >
 			    {
 			    	list.map((item,index)=>{
-			    		return <div key={index} className="hot-movie" style={{
+			    		return <div key={index} className="hot-movie" onClick={this.changeUrl.bind(this,item.id)} style={{
 			                display: 'block',
 			                position: 'relative',
 			                top: this.state.slideIndex === index ? -20 : 0,
@@ -60,7 +67,7 @@ export default class Mostconcerned extends Component{
 		        <section>
 		        	{
 		        		futrueData.map((item,index)=>{
-				    		return <div key={index} className="hot-movie futrue-movie" >
+				    		return <div key={index} className="hot-movie futrue-movie" onClick={this.changeUrl.bind(this,item.id)} >
 				             <div className="hot-movie-img">
 				             	<img src={item.image} />
 				             </div>

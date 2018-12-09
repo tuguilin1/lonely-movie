@@ -1,16 +1,23 @@
 import React,{Component} from "react";
 import { Button } from 'antd-mobile';
+import PropTypes from "prop-types"
 import "./index.scss"
 
 export default class Movie extends Component{
+	static contextTypes = {
+		history:PropTypes.object
+	}
+
 	constructor(props){
 		super(props)
 	}
-
+	changeUrl = (movieId)=>{
+		this.context.history.push(`/movie/${movieId}`)
+	}
 	render(){
 		let {data} = this.props;
 		return(
-			<div className="movie">
+			<div className="movie" onClick={this.changeUrl.bind(this,data.movieId)}>
 				<div className="movie-img">
 					<img src={data.img} />
 				</div>
