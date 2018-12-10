@@ -28,9 +28,11 @@ export default class Moviedetail extends Component{
 		
 	}
 	componentDidMount(){
+		
 		top = document.documentElement.scrollTop
 		this.fn = debounce(()=>{
-			if(top-document.documentElement.scrollTop<0){
+			let scrollTop = document.documentElement.scrollTop
+			if(top-scrollTop<0){
 				this.setState({
 					isfix:true
 				})
@@ -40,28 +42,59 @@ export default class Moviedetail extends Component{
 					isfix:false
 				})
 			}
-		},10)
+			if(this.refs.short){
+				if(scrollTop>=0&&scrollTop<this.refs.short.offsetTop){
+					this.setState({
+						activeNum:0,
+						left:"16%"
+					})
+				}else if(scrollTop>=this.refs.short.offsetTop&&scrollTop<this.refs.long.offsetTop){
+					this.setState({
+						activeNum:1,
+						left:"50%"
+					})
+				}else{
+					this.setState({
+						activeNum:2,
+						left:"83%"
+					})
+				}
+			}
+			
+		},0)
 		window.addEventListener("scroll",this.fn)
 		this.getMovieInfo()
 	}
 	componentWillUnmount(){
 		window.removeEventListener("scroll",this.fn)
 	}
+	shouldComponentUpdate(nextprops,nextstate){
+		let arr = ["activeNum","isfix","height","isShow"]
+		for(var item of arr){
+			if(nextstate[item] !== this.state[item]){
+				return true
+			}
+		}
+		return false
+	}
 	changeActive = (e)=>{
 		switch(e.target.innerHTML){
 			case "简介":
+				this.refs.intro.scrollIntoView()
 				this.setState({
 					activeNum:0,
 					left:"16%"
 				});
 				break;
-			case "长评":
+			case "短评":
+				this.refs.short.scrollIntoView()
 				this.setState({
 					activeNum:1,
 					left:"50%"
 				})
 				break;
-			case "短评":
+			case "长评":
+				this.refs.long.scrollIntoView()
 				this.setState({
 					activeNum:2,
 					left:"83%"
@@ -81,13 +114,12 @@ export default class Moviedetail extends Component{
 		this.setState({
 			movieData:data[0].data.data.basic,
 			comments:data[1].data.cts,
-			longComments:data[3].data.comments[0]||{},
+			longComments:data[3].data.comments,
 			photos:data[2].data,
 			isShow:true
 		})
 	}
 	render(){
-		console.log(1)
 		if(!this.state.isShow){
 			return null
 		}
@@ -121,10 +153,10 @@ export default class Moviedetail extends Component{
 						</div>
 					</div>
 				</section>
-				<section className="movie-content">
+				<section className="movie-content" ref="intro">
 					<nav className={this.state.isfix?"fix":""} ref="nav">
 						<ul className="nav" onClick={this.changeActive}>
-							{["简介","长评","短评"].map((item,index)=>{
+							{["简介","短评","长评"].map((item,index)=>{
 								return <li key={index} className={this.state.activeNum  === index?"active":""}>{item}</li>
 							})}
 						</ul>
@@ -135,7 +167,7 @@ export default class Moviedetail extends Component{
 					</nav>
 					<div className={this.state.isfix?"show":"not-show"}>
 					</div>
-					<div className="movie-intro" style={{height:this.state.height}}>
+					<div className="movie-intro"  style={{height:this.state.height}}>
 						<span>{story}</span>
 					</div>
 					<div className="intro-nav" onClick={this.changeHeight}>
@@ -190,14 +222,14 @@ export default class Moviedetail extends Component{
 							</div>
 						</div>
 					</div>
-					<div className="total-players">
+					<div className="total-players" ref="short">
 						<span>共{this.state.photos.length}张剧照</span>
 					</div>
-					<div className="short-comments">
+					<div className="short-comments" >
 						<header>
 							网友短评({this.state.comments.length})
 						</header>
-						<ul className="comments">
+						<ul className="comments" >
 						{
 							this.state.comments.map((item,index)=>{
 								return(
@@ -224,30 +256,37 @@ export default class Moviedetail extends Component{
 							
 						</ul>
 					</div>
-					<div className="long-comments">
+					<div className="long-comments" ref="long">
 						<header>
 							精选长评
 						</header>
-						<div className="comments">
-							<div className="comments-name">
-								{this.state.longComments.title}
-							</div>
-							<div className="comments-content">
-								{this.state.longComments.content}
-							</div>
-							<div className="comments-user">
-								<div className="user-pic">
-									<img src={this.state.longComments.headurl} />
-								</div>
-								<p className="user-name">
-									{this.state.longComments.nickname}
-								</p>
-								<p className="rating">
-									评分
-								</p>
-								<span>{this.state.longComments.rating}</span>
-							</div>
-						</div>
+						{
+							this.state.longComments.slice(0,4).map((item,index)=>{
+								return(
+									<div className="comments" key={index}>
+										<div className="comments-name">
+											{item.title}
+										</div>
+										<div className="comments-content">
+											{item.content}
+										</div>
+										<div className="comments-user">
+											<div className="user-pic">
+												<img src={item.headurl} />
+											</div>
+											<p className="user-name">
+												{item.nickname}
+											</p>
+											<p className="rating">
+												评分
+											</p>
+											<span>{item.rating}</span>
+										</div>
+									</div>
+								)
+							})
+						}
+						
 					</div>
 				</section>
 			</div>

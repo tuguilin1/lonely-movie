@@ -183,6 +183,7 @@
 			}
 		}
 		.short-comments{
+			margin-top: 2rem;
 			box-sizing: border-box;
 			padding-left: 1rem;
 			padding-right:1rem;
@@ -256,6 +257,7 @@
 			padding-right:1rem;
 			.comments-name{
 				font-size: 1.2rem;
+				margin-top: 2rem;
 			}
 			.comments-content{
 				line-height: 1.2rem;
@@ -265,6 +267,7 @@
 				display: flex;
 				margin-top: 1rem;
 				line-height: 3rem;
+				border-bottom: 1px solid #999;
 				.user-pic{
 					width: 3rem;
 					height: 3rem;
