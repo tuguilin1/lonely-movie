@@ -102,3 +102,16 @@ export const getMovieDetail = function(movieId){
 	})
 }
 
+export const getCinemas = function(){
+	let url = "http://127.0.0.1:3001/cinema";
+	return new Promise((res,rej)=>{
+		axios.get(url,{
+			params:{
+				locationId:290,
+			}
+		}).then((data)=>{
+			res(data)
+		})
+	})
+}
+

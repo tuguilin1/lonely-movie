@@ -1,0 +1,68 @@
+.cinema{
+	nav{
+		height: 3rem;
+		display: flex;
+		width: 100%;
+		.location{
+			width: 5rem;
+			height: 100%;
+			line-height: 3rem;
+			margin-left: 2rem;
+			font-size: 1rem;
+			position: relative;
+			color:#999;
+			.am-icon{
+				position: absolute;
+				top:.8rem;
+				color:#999;
+			}
+		}
+		.category{
+			flex:1;
+			display: flex;
+			li{
+				list-style: none;
+				flex:1;
+				line-height: 3rem;
+				font-size: .8rem;
+				text-align: center;
+				position: relative;
+				.am-icon{
+					position: absolute;
+					top:1.2rem;
+					width: .6rem;
+					height: .6rem;
+				}
+			}
+			li:before{
+				content:"";
+				position:absolute;
+				height: 1rem;
+				top:1rem;
+				left:0rem;
+				width:1px;
+				background:#999;
+				transform: scaleX(.5);
+			}
+		}
+		.search-icon{
+			width: 3rem;
+			position: relative;
+			.am-icon{
+				position:absolute;
+				left:1rem;
+				top:1rem;
+			}
+		}
+		.search-icon:before{
+				content:"";
+				position:absolute;
+				height: 1rem;
+				top:1rem;
+				left:0rem;
+				width:1px;
+				background:#999;
+				transform: scaleX(.5);
+			}
+	}
+}
