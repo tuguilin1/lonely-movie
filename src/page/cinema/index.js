@@ -2,17 +2,29 @@ import React,{Component} from "react"
 import "./index.scss"
 import {Icon} from "antd-mobile"
 import {getCinemas} from "../../ajax/api"
+import LoadMore from "../../components/loadmore"
 
 export default class Cinema extends Component{
 	constructor(props){
-		super(props)
+		super(props);
+		this.state={
+			array:[],
+			num:20
+		}
 	}
 	getCinemaData = async ()=>{
 		let data = await getCinemas();
-		console.log(data)
+		this.setState({
+			array:data.data.data.cinemaList
+		})
 	}
-
+	load = ()=>{
+		this.setState({
+			num:this.state.num+20
+		})
+	}
 	componentDidMount(){
+		this.getCinemaData()
 	}
 
 	render(){
@@ -41,6 +53,42 @@ export default class Cinema extends Component{
 						<Icon type="search" size="xxs" />
 					</div>
 				</nav>
+				<LoadMore load={this.load}>
+					<div>
+						<ul className="cinema-list">
+						{
+							this.state.array.slice(0,this.state.num).map((item,index)=>{
+								return(
+									<li key={index}>
+										<header>
+											<span className="cinema-name">
+												{item.cinameName}
+											</span>
+											<span className="cinema-price">
+												<strong>{item.minPrice/100}元</strong>起
+											</span>
+										</header>
+										<p className="cinema-location">
+											{item.address}
+										</p>
+										<div className="cinema-tag">
+											{Object.keys(item.feature).map((_item,index)=>{
+												if(item.feature[_item]){
+													return <span key={index}>{_item.slice(3)}</span>
+												}
+											})}
+										</div>
+										<p className="recent-movie">
+											近期场次
+										</p>
+									</li>
+								)
+							})
+						}
+							
+						</ul>
+					</div>
+				</LoadMore>
 			</div>
 		)
 	}

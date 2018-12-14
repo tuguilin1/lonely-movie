@@ -1,4 +1,5 @@
 .cinema{
+	box-sizing: border-box;
 	nav{
 		height: 3rem;
 		display: flex;
@@ -64,5 +65,52 @@
 				background:#999;
 				transform: scaleX(.5);
 			}
+	}
+	.cinema-list{
+		width: 100%;
+		box-sizing: border-box;
+		padding-left:1rem;
+		padding-right: 1rem;
+		background: white;
+		overflow: hidden;
+		li{
+			margin-top: 1rem;
+			list-style: none;
+			min-height: 8rem;
+			background: transparent linear-gradient(0deg,#ededed,#ededed 50%,transparent 0,transparent 0) 0 100% repeat-x;
+			background-size: 100% 1px;
+			header{
+				width: 100%;
+				display: flex;
+				justify-content: space-between;
+				height: 3rem;
+				line-height: 3rem;
+				.cinema-name{
+					font-size: 1.2rem;
+				}
+				strong{
+					color:#ff4d64;
+				}
+			}
+			.cinema-location{
+				color:#999;
+				line-height: 2rem;
+			}
+			.cinema-tag{
+				line-height: 2rem;
+				span{
+					color:#349cec;
+					font-size: .6rem;
+					padding-right: .2rem;
+					padding-left: .2rem;
+					margin-right: .5rem;
+					border:1px solid #349cec;
+				}
+			}
+			.recent-movie{
+				line-height: 2rem;
+				display: none;
+			}
+		}
 	}
 }
