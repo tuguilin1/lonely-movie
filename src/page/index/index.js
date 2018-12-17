@@ -13,7 +13,7 @@ export default class Index extends Component{
 	render(){
 		return(
 			<div>
-				<Header/>
+				<Header push={this.props.push}/>
 
 				<Route path="/index/movie" component={IndexPage} />
 				<Route path="/index/cinema" component={Cinema} />

@@ -8,9 +8,22 @@ export default class Header extends Component{
 		}
 	}
 	changeActive = (index)=>{
+		if(index === this.state.index){
+			return null
+		}
 		this.setState({
 			index:index
 		})
+		switch(index){
+			case 0:
+				this.props.push("/index/movie");
+				break;
+			case 1:
+				this.props.push("/index/cinema");
+				break;
+			default:
+				break;
+		}
 	}
 	render(){
 		let list=["首页","购票","商城","发现"]

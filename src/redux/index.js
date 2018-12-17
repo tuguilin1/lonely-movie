@@ -1,6 +1,7 @@
-import Reducer from "./reducer";
+import Movie from "./movie";
+import cinema from "./cinema"
 import createStore from "./redux";
-
-let store = createStore(Reducer,[])
+import combineReducers from "./combinereducers"
+let store = createStore(combineReducers({Movie,cinema}),{})
 
 export {store}

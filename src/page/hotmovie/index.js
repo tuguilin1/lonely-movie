@@ -15,7 +15,7 @@ export default class Hotmovie extends Component{
 	constructor(props){
 		super(props);
 		this.state={
-			data:store.getState(),
+			data:store.getState().Movie||[],
 			isNowShow:true,
 			futrueData:[],
 			attention:[],

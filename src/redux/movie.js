@@ -1,7 +1,7 @@
 
 let initialstate = []
 
-export default function reducer(state = initialstate,action){
+export default function Movies(state = initialstate,action){
 	switch(action.type){
 		case "CHANGEMOVIES":
 			return [...action.payload];

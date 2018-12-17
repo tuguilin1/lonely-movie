@@ -5,7 +5,7 @@ import pathToRegexp from "path-to-regexp"
 export default class Route extends Component{
 	static contextTypes = {
 		location:PropTypes.object,
-		push:PropTypes.object
+		history:PropTypes.object
 	}
 	constructor(props){
 		super(props)
@@ -26,7 +26,7 @@ export default class Route extends Component{
 			}
 		}
 		if(path === pathname||pathname.startsWith(path)){
-			return <Component/>
+			return <Component push={this.context.history.push} />
 		}
 		return null
 	}

@@ -3,6 +3,7 @@ import "./index.scss"
 import {Icon} from "antd-mobile"
 import {getCinemas} from "../../ajax/api"
 import LoadMore from "../../components/loadmore"
+import {store} from "../../redux"
 
 export default class Cinema extends Component{
 	constructor(props){
@@ -22,6 +23,15 @@ export default class Cinema extends Component{
 		this.setState({
 			num:this.state.num+20
 		})
+	}
+	jumpUrl = (item)=>{
+		let action = {
+			type:"CHANGECINEMA",
+			payload:{...item}
+		}
+		store.dispatch(action)
+		this.props.push(`/cinema/${item.cinemaId}`);
+
 	}
 	componentDidMount(){
 		this.getCinemaData()
@@ -59,7 +69,7 @@ export default class Cinema extends Component{
 						{
 							this.state.array.slice(0,this.state.num).map((item,index)=>{
 								return(
-									<li key={index}>
+									<li key={index} onClick={this.jumpUrl.bind(this,item)}>
 										<header>
 											<span className="cinema-name">
 												{item.cinameName}
