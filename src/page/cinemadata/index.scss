@@ -1,0 +1,97 @@
+.cinema-data{
+	background: white;
+	header{
+		width: 100%;
+		height: 6rem;
+		box-sizing: border-box;
+		padding-left: 1rem;
+		padding-right:1rem;
+		display: flex;
+		.cinema-data-left{
+			width: 70%;
+			height: 6rem;
+			p{
+				height: 2rem;
+			}
+			.cinema-name{
+				line-height: 2rem;
+				font-size: 1rem;
+			}
+			.cinema-address{
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				line-height: 2rem;
+				color:#999;
+			}
+			.cinema-tag{
+				line-height: 2rem;
+				font-size: .1rem;
+				span{
+					margin-left: .15rem;
+					color:#349cec;
+					border: 1px solid #349cec;
+				}
+			}
+		}
+		.cinema-data-right{
+			display: flex;
+			width: 30%;
+			.cinema-iphone{
+				height: 6rem;
+				width: 50%;
+				background: url("./电话.png") no-repeat;
+				background-position: right center;
+				background-size: 1.5rem 1.5rem;
+			}
+			.cinema-icon{
+				height: 6rem;
+				width: 50%;
+				background: url("./位置.png") no-repeat;
+				background-position: right center;
+				background-size: 1.5rem 1.5rem;
+			}
+		}
+	}
+	.movies{
+		width: 100%;
+		height: 10rem;
+		margin-top: 1rem;
+		.movie-scroll{
+			height: 8rem;
+			width: 100%;
+			overflow: hidden;
+			background: #828282;
+			.transit{
+				transition: .5s;
+			}
+			ul{	
+				display: flex;
+				flex-wrap: nowrap;
+				height: 8rem;
+				li{
+					margin-top: 1.5rem;
+					height: 6rem;
+					list-style: none;
+					box-sizing: border-box;
+					padding-right: 1rem;
+					min-width: 5rem;
+					width: 5rem;
+					img{
+						width: 100%;
+						height: 100%;
+					}
+				}
+				.active{
+					height: 7rem;
+					min-width: 6rem;
+					margin-top: .5rem;
+					img{
+						border:1px solid white;
+					}
+				}
+			}
+		}
+
+	}
+}

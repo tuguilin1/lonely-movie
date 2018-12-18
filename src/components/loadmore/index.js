@@ -37,7 +37,7 @@ export default class loadMore extends Component{
 			this.setState({
 				shift:0
 			})
-			
+	
 		}
 	}
 	render(){
