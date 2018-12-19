@@ -47,6 +47,7 @@ export default class CinemaData extends Component{
 		})
 	}
 	touchMove = (e)=>{
+		console.log(1)
 		this.setState({
 			left:this.startLeft+e.changedTouches[0].clientX - this.startX
 		})
@@ -67,9 +68,10 @@ export default class CinemaData extends Component{
 					left:this.state.left-index*80+Math.abs(width)
 				})
 			}else{
+				let num = len - this.state.activeNum-1
 				this.setState({
 					activeNum:len-1,
-					left:this.state.left+Math.abs(width)
+					left:this.state.left+Math.abs(width)-num*80
 				})
 			}
 		}else if(width>0){
@@ -82,6 +84,14 @@ export default class CinemaData extends Component{
 				this.setState({
 					activeNum:this.state.activeNum-index,
 					left:this.state.left+index*80-Math.abs(width)
+				})
+			}
+		}else{
+			let num = e.target.parentNode.getAttribute("data-key");
+			if(num !== null&&num !== this.state.activeNum){
+				this.setState({
+					activeNum:Number(num),
+					left:this.state.left-(num-this.state.activeNum)*80
 				})
 			}
 		}
@@ -118,7 +128,7 @@ export default class CinemaData extends Component{
 						{
 							this.state.movies.map((item,index)=>{
 								return (
-									<li key={index} className={this.state.activeNum==index?"active":""}>
+									<li key={index} data-key={index} className={this.state.activeNum==index?"active":""}>
 										<img src={item.img} />
 									</li>
 								)
@@ -126,6 +136,18 @@ export default class CinemaData extends Component{
 						}							
 						</ul>
 					</div>
+					<div className="movie-info">
+						<p>
+							<span className="movie-name">{this.state.movies[this.state.activeNum]?this.state.movies[this.state.activeNum].title:""}</span>
+							<span>孤独网评分:{this.state.movies[this.state.activeNum]?this.state.movies[this.state.activeNum].ratingFinal:""}</span>
+						</p>
+						<p className="movie-type">
+							<span>{this.state.movies[this.state.activeNum]?this.state.movies[this.state.activeNum].type:""}</span>
+							<span>{this.state.movies[this.state.activeNum]?this.state.movies[this.state.activeNum].performers[0].name:""}</span>
+						</p>
+					</div>
+				</section>
+				<section className="buy-movie">
 				</section>
 			</div>
 		)
