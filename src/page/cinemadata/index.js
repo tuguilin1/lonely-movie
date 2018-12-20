@@ -1,5 +1,6 @@
 import React,{Component} from "react"
 import {getCinemaData} from "../../ajax/api"
+import Sheet from "../../components/sheet"
 import {store} from "../../redux"
 import "./index.scss"
 export default class CinemaData extends Component{
@@ -10,17 +11,17 @@ export default class CinemaData extends Component{
 			left:0,
 			activeNum:0,
 			isTouch:false,
-			movies:[]
+			movies:[],
+			list:[]
 		}
 		this.startX = 0;
-		this.startLeft = 0
-
+		this.startLeft = 0;
 	}
 	getdata = async (cinemaId)=>{
 		let data = await getCinemaData(cinemaId);
-		console.log(data);
 		this.setState({
-			movies:data.data.data.movies
+			movies:data.data.data.movies,
+			list:data.data.data.showtimes
 		})
 	}
 	componentWillMount(){
@@ -47,7 +48,6 @@ export default class CinemaData extends Component{
 		})
 	}
 	touchMove = (e)=>{
-		console.log(1)
 		this.setState({
 			left:this.startLeft+e.changedTouches[0].clientX - this.startX
 		})
@@ -148,6 +148,7 @@ export default class CinemaData extends Component{
 					</div>
 				</section>
 				<section className="buy-movie">
+					<Sheet movie={this.state.movies[this.state.activeNum]} list={this.state.list}/>
 				</section>
 			</div>
 		)

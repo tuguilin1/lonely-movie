@@ -1,6 +1,7 @@
 import React,{Component} from "react"
 import {Icon} from "antd-mobile"
 import {getMovieDetail} from "../../ajax/api"
+
 import "./index.scss"
 
 
