@@ -64,7 +64,7 @@ export default class Sheet extends Component{
 function getTime(time){
 	let date = new Date(time*1000);
 	let hour = date.getHours();
-	hour = hour<10?hour+"0":hour;
+	hour = hour<10?"0"+hour:hour;
 	let minutes = date.getMinutes();
 	minutes = minutes<10?minutes+"0":minutes;
 	return `${hour}:${minutes}`

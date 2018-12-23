@@ -1,0 +1,61 @@
+.online-ticket{
+	background: white;
+	width: 100%;
+	header{
+		box-sizing: border-box;
+		padding: 1rem;
+		height: 128px;
+		p{
+			line-height: 1.5rem;
+			height: 2rem;
+		}
+		.movie-name{
+			font-size: 1.1rem;
+		}
+		.online-info{
+			color:#999;
+		}
+		.ticket-info{
+			text-align: center;
+			span{
+				padding-left:2rem;
+				margin-left: 1rem;
+			}
+			.left-seat{
+				background: url("./leftseat.png") no-repeat;
+				background-size: 1.6rem;
+				background-position: 0 0;
+			}
+			.have-seated{
+				background: url("./hasseated.png") no-repeat;
+				background-size: 1.6rem;
+				background-position: 0 0;
+			}
+			.best-seat{
+				background: url("./bestseat.png") no-repeat;
+				background-size: 1.6rem;
+				background-position: 0 0;
+			}
+		}
+	}
+	.canvas{
+		width: 100vw;
+		height: calc(100vh - 9rem);
+		background:#F7F7F7;
+		box-sizing: border-box;
+		padding-left: 1rem;
+		padding-right:1rem;
+	}
+	.hall-name{
+		width: 8rem;
+		height: 2rem;
+		background: #EEE;
+		position: absolute;
+		top:8rem;
+		left: 50%;
+		text-align: center;
+		color:#555;
+		line-height: 2rem;
+		margin-left: -4rem;
+	}
+}

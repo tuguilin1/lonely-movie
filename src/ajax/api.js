@@ -128,3 +128,18 @@ export const getCinemaData = function(cinemaId){
 	})
 }
 
+export const getSeatData = function(dId){
+	let url = "http://127.0.0.1:3001/seatdata";
+	return new Promise((res,rej)=>{
+		axios.get(url,{
+			params:{
+				dId
+			}
+		}).then((data)=>{
+			res(data)
+		})
+	})
+}
+
+
+

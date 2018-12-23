@@ -3,6 +3,7 @@ import Index from "./page/index"
 import Hotmovie from "./page/hotmovie"
 import Moviedetail from "./page/moviedetail"
 import CinemaData from "./page/cinemadata"
+import Ticket from "./page/onlineticket"
 import {Router,Route,Redirect} from "./router"
 import './index.css';
 
@@ -14,6 +15,7 @@ class App extends Component {
         <Route path="/hotmovie" component={Hotmovie}/>
         <Route path="/movie/:movieid" component={Moviedetail}/>
         <Route path="/cinema/:cinemaId" component={CinemaData}/>
+        <Route path="/ticket/:pid" component={Ticket} />
         <Redirect origin="/" destination="/index" />
       </Router>
     );
