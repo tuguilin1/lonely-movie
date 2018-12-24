@@ -40,11 +40,12 @@
 	}
 	.canvas{
 		width: 100vw;
-		height: calc(100vh - 9rem);
+		height: calc(100vh - 8rem);
 		background:#F7F7F7;
 		box-sizing: border-box;
 		padding-left: 1rem;
 		padding-right:1rem;
+		overflow: scroll;
 	}
 	.hall-name{
 		width: 8rem;

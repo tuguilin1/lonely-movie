@@ -22,7 +22,7 @@ export default class Route extends Component{
 				keys.forEach((item,index)=>{
 					param[item.name] = match[index+1]
 				})
-				return <Component param={param} />
+				return <Component push={this.context.history.push} param={param} />
 			}
 		}
 		if(path === pathname||pathname.startsWith(path)){

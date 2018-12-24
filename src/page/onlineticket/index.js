@@ -16,28 +16,26 @@ export default class Onlineticket extends Component{
 		return data.data
 	}
 	touchEnd = (e)=>{
-		console.log(e.changedTouches[0]);
 		let {pageX,pageY} = e.changedTouches[0];
-		let X = Math.round((pageX-16)*2/this.seatWidth)-1;
-		let Y = Math.round((pageY-198)/30)-1;
-		console.log(X,Y);
-		if(!this.seated[`${X}-${Y}`]){
-			this.ctx.clearRect((X+1)*this.seatWidth,195+Y*60,this.seatWidth,60);
+		let X = Math.ceil((pageX-16-this.seatWidth/4)*2/(this.seatWidth-2))-1;
+		let Y = Math.ceil((pageY-228+(this.seatWidth+1)/2)*2/(this.seatWidth+20))-1;
+		if(this.seated[`${X}-${Y}`]===0){
+			this.ctx.clearRect((X+1)*this.seatWidth,195+Y*(this.seatWidth+20),this.seatWidth,40);
 			this.ctx.fillStyle = "red";
-			this.ctx.fillRect((X+1)*this.seatWidth,200+Y*60,this.seatWidth-4,this.seatWidth-4);
+			this.ctx.fillRect((X+1)*this.seatWidth,200+Y*(this.seatWidth+20),this.seatWidth-4,this.seatWidth-4);
 			this.ctx.globalCompositeOperation="source-over";
-			this.ctx.fillRect((X+1)*this.seatWidth+5,195+Y*60,this.seatWidth-14,this.seatWidth-4);
+			this.ctx.fillRect((X+1)*this.seatWidth+5,195+Y*(this.seatWidth+20),this.seatWidth-14,this.seatWidth-4);
 			this.seated[`${X}-${Y}`] = 1
 		}
 	}
 	async componentDidMount(){
+		console.log(this.props.param.pid)
 		let canvas = this.refs.canvas;
 		let ctx = canvas.getContext("2d");
 		this.ctx = ctx
 		let width = document.body.clientWidth-32;
-		let {seat,seatColumnCount,seatRowCount} =await this.getData(439233109)
+		let {seat,seatColumnCount,seatRowCount} =await this.getData(this.props.param.pid)
 		let seatWidth = Math.floor(width*2/seatColumnCount);
-		console.log(seatWidth)
 		this.seatWidth = seatWidth
 		setTimeout(()=>{
 			seat.forEach((item)=>{
@@ -45,19 +43,20 @@ export default class Onlineticket extends Component{
 					return
 				}
 				if(item.status){
-					ctx.strokeRect((item.x+1)*seatWidth,200+(item.y)*60,seatWidth-4,seatWidth-4);
+					ctx.strokeRect((item.x+1)*seatWidth,200+(item.y)*(seatWidth+20),seatWidth-4,seatWidth-4);
 					ctx.globalCompositeOperation="source-over";
 					ctx.fillStyle = "white";
-					ctx.fillRect((item.x+1)*seatWidth+5,195+(item.y)*60,seatWidth-14,seatWidth-4);
+					ctx.fillRect((item.x+1)*seatWidth+5,195+(item.y)*(seatWidth+20),seatWidth-14,seatWidth-4);
 					ctx.save();
 					ctx.strokeStyle="gray";
-					ctx.strokeRect((item.x+1)*seatWidth+5,195+(item.y)*60,seatWidth-14,seatWidth-4);
+					ctx.strokeRect((item.x+1)*seatWidth+5,195+(item.y)*(seatWidth+20),seatWidth-14,seatWidth-4);
 					ctx.restore()
+					this.seated[`${item.x}-${item.y}`] = 0
 				}else{
 					ctx.fillStyle = "red";
-					ctx.fillRect((item.x+1)*seatWidth,200+(item.y)*60,seatWidth-4,seatWidth-4);
+					ctx.fillRect((item.x+1)*seatWidth,200+(item.y)*(seatWidth+20),seatWidth-4,seatWidth-4);
 					ctx.globalCompositeOperation="source-over";
-					ctx.fillRect((item.x+1)*seatWidth+5,195+(item.y)*60,seatWidth-14,seatWidth-4);
+					ctx.fillRect((item.x+1)*seatWidth+5,195+(item.y)*(seatWidth+20),seatWidth-14,seatWidth-4);
 					this.seated[`${item.x}-${item.y}`] = 1
 				}
 				
@@ -85,7 +84,7 @@ export default class Onlineticket extends Component{
 				<div className="hall-name">
 					银幕
 				</div>
-				<canvas className="canvas" ref="canvas" onTouchEnd={this.touchEnd} width={document.body.clientWidth*2} height={this.state.height}>
+				<canvas className="canvas" ref="canvas" style={{transform:"scale(1)"}} onTouchEnd={this.touchEnd} width={document.body.clientWidth*2} height={this.state.height}>
 
 				</canvas>
 			</div>

@@ -17,8 +17,18 @@ export default class Sheet extends Component{
 		}
 		return false
 	}
+	jumpUrl = (item)=>{
+		let id = item.providers[0];
+		console.log(id)
+		id = id&&id.dId;
+		if(!id){
+			return null
+		}
+		console.log(this.props)
+		this.props.push(`/ticket/${id}`)
+	}
 	render(){
-		if(!this.props.movie||!this.props.list){
+		if(!this.props.movie){
 			return null
 		}
 		let {movieId,showDates} = this.props.movie;
@@ -48,7 +58,7 @@ export default class Sheet extends Component{
 									<p className="now-price">特惠{item.dsBoxPrice/100}元</p>
 									<p className="pre-price">80.00元</p>
 								</div>
-								<div className="buy-btn">
+								<div className="buy-btn" onClick={this.jumpUrl.bind(this,item)}>
 									<p>购票</p>
 								</div>
 							</li>

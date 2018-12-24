@@ -38,6 +38,7 @@ export default class CinemaData extends Component{
 		}
 	}
 	componentDidMount(){
+		console.log(this.props)
 		this.getdata(this.props.param.cinemaId)
 	}
 	touchStart = (e)=>{
@@ -148,7 +149,7 @@ export default class CinemaData extends Component{
 					</div>
 				</section>
 				<section className="buy-movie">
-					<Sheet movie={this.state.movies[this.state.activeNum]} list={this.state.list}/>
+					<Sheet movie={this.state.movies[this.state.activeNum]} list={this.state.list} push={this.props.push} />
 				</section>
 			</div>
 		)
