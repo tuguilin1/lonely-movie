@@ -9,12 +9,12 @@
 
 ##  网站图片预览
 
-(https://github.com/tuguilin1/lonely-movie/blob/master/src/image/page1.png)
+![](https://github.com/tuguilin1/lonely-movie/blob/master/src/image/page1.png)
 
-(https://github.com/tuguilin1/lonely-movie/blob/master/src/image/page2.png)
+![](https://github.com/tuguilin1/lonely-movie/blob/master/src/image/page2.png)
 
-(https://github.com/tuguilin1/lonely-movie/blob/master/src/image/page3.png)
+![](https://github.com/tuguilin1/lonely-movie/blob/master/src/image/page3.png)
 
-(https://github.com/tuguilin1/lonely-movie/blob/master/src/image/page4.png)
+![](https://github.com/tuguilin1/lonely-movie/blob/master/src/image/page4.png)
 
-(https://github.com/tuguilin1/lonely-movie/blob/master/src/image/page5.png)
+![](https://github.com/tuguilin1/lonely-movie/blob/master/src/image/page5.png)
